@@ -1,5 +1,5 @@
 """
-Link - 
+Link - https://leetcode.com/problems/friends-of-appropriate-ages/
 Statement - Some people will make friend requests. 
             The list of their ages is given and ages[i] is the age of the ith person. 
             Person A will NOT friend request person B (B != A) 
