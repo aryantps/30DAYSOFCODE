@@ -15,9 +15,27 @@ df = pd.read_csv('pokemon_alopez247.csv')
                                                                         #        'Body_Style'],
                                                                         #       dtype='object')
 df = df[['isLegendary','Generation', 'Type_1', 'Type_2', 'HP', 'Attack', 'Defense',
-         'Sp_Atk', 'Sp_Def', 'Speed','Color','Egg_Group_1','Height_m','Weight_kg','Body_Style']]           
+         'Sp_Atk', 'Sp_Def', 'Speed','Color','Egg_Group_1','Height_m','Weight_kg','Body_Style']]       
+
+
+
 
 df['isLegendary'] = df['isLegendary'].astype(int)
+
+def coreleation_visualization(categories):
+    ndf = df[categories]
+    f = plt.figure(figsize=(15, 10))
+    plt.matshow(ndf.corr(), fignum=f.number)
+    plt.xticks(range(ndf.shape[1]), ndf.columns, fontsize=14, rotation=45)
+    plt.yticks(range(ndf.shape[1]), ndf.columns, fontsize=14)
+    cb = plt.colorbar()
+    cb.ax.tick_params(labelsize=14)
+    plt.title('Correlation Matrix\n\n\n', fontsize=20,loc='left');
+    plt.savefig('correlation.png')
+    #return plt.show()
+
+coreleation_visualization(['isLegendary','Generation', 'HP', 'Attack', 'Defense',
+         'Sp_Atk', 'Sp_Def', 'Speed','Height_m','Weight_kg'])
 
 def dummy_creation(df,categories):
     """
@@ -101,7 +119,7 @@ model.add(keras.layers.Dense(2, activation='softmax'))
 model.compile(optimizer='sgd', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
 #model fit on training data
-model.fit(train_data, train_labels, epochs=1000)
+model.fit(train_data, train_labels, epochs=100)
 
 loss_value, accuracy_value = model.evaluate(test_data, test_labels)
 print(f'Our test accuracy was {accuracy_value})')
