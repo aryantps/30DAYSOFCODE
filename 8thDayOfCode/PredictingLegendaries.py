@@ -141,4 +141,5 @@ def predictor(test_data, test_labels, index):
         print(f'This was incorrectly predicted to be a \"{np.argmax(prediction[index])}\". It was actually a \"{test_labels[index]}\".')
         return(prediction)
 
+
 predictor(test_data, test_labels, 100)
