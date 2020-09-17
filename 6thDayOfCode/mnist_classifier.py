@@ -4,7 +4,7 @@ tf.disable_v2_behavior()
 import numpy as np
 
 
-import input_data
+import input_data    #
 mnist = input_data.read_data_sets("MNIST_data/", one_hot=True)
 
 
@@ -97,7 +97,7 @@ def train_neural_network(X):
                 epoch_loss += c
             #print('Epoch',epoch,'completed out of',hm_epochs,' loss:',epoch_loss)
             
-            if epoch % 5 == 0:
+            if epoch % 1 == 0:
                 print (f"Cost after epoch {epoch} / {hm_epochs}: {epoch_loss} ")
             if epoch % 5 == 0:
                 costs.append(epoch_loss)
